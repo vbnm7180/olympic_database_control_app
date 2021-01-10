@@ -1,0 +1,49 @@
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+}
+
+.header {
+    display: flex;
+    height: 100px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.CRUD {}
+
+.search {}
+
+.requests {}
+
+.main {
+    display: flex;
+}
+
+.tables-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 200px;
+    height: 300px;
+}
+
+.content {}
+
+.table {
+    font-size: 14px;
+}
+
+.string {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.cell {
+    display: flex;
+    width: 170px;
+    border: 1px solid #000;
+    padding: 5px;
+}
