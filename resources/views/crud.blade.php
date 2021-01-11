@@ -9,11 +9,22 @@
 		</tr>
 		@foreach($res as $string)
 		<tr class="string">
+
 			@foreach($string as $value)
+
+
+
 			<td class="cell">{{$value}}</td>
+
 			@endforeach
+
+			@php
+			reset($string);
+			@endphp
+
 			<td class="cell"><a href="" class="change">Изменить</a></td>
-			<td class="cell"><a href="/delete/{{$table}}" class="delete">Удалить</a></td>
+
+			<td class="cell"><a href="/delete/{{$table}}-{{current($string)}}" class="delete">Удалить</a></td>
 		</tr>
 		@endforeach
 

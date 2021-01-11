@@ -20,11 +20,21 @@ class CRUDController extends Controller
         switch ($table) {
             case '1':
                 $res = DB::select('select * from competition');
+                /*
+                $res = array_map(function ($val) {
+                    return (array)$val;
+                }, $res);
                 Log::info($res);
+                */
                 return view('crud',['res'=> $res,'table'=>$table]);
                 break;
             case '2':
                 $res = DB::select('select * from country');
+                /*
+                $res = array_map(function ($val) {
+                    return (array)$val;
+                }, $res);
+                */
                 return view('crud',['res'=> $res,'table'=>$table]);
                 break;
             case '3':
