@@ -13,7 +13,7 @@
 			<td class="cell">{{$value}}</td>
 			@endforeach
 			<td class="cell"><a href="" class="change">Изменить</a></td>
-			<td class="cell"><a href="" class="change">Удалить</a></td>
+			<td class="cell"><a href="/delete/{{$table}}" class="delete">Удалить</a></td>
 		</tr>
 		@endforeach
 

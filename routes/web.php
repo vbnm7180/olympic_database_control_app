@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CRUDController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('crud');
+Route::get('/', function(){
+    $res = DB::select('select * from competition');
+    return view('crud')->with('res', $res);
 });
+
+Route::get('/', function(){
+    $res = DB::select('select * from competition');
+    return view('crud',['res'=> $res,'table'=>1]);
+});
+
 
 Route::get('/select/{table}', [ CRUDController::class, 'select']);
