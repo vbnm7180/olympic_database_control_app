@@ -29,4 +29,4 @@ Route::get('/', function(){
 
 Route::get('/select/{table}', [ CRUDController::class, 'select']);
 
-Route::get('/delete/{table}-{string}');
+Route::get('/delete/{table}-{string}', [ CRUDController::class, 'delete']);

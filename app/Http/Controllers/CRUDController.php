@@ -12,6 +12,8 @@ use App\Models\ResultModel;
 use App\Models\SportsGroundModel;
 use App\Models\SportsmenModel;
 use App\Models\SportTypeModel;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 
 class CRUDController extends Controller
 {
@@ -65,28 +67,28 @@ class CRUDController extends Controller
     public function delete($table,$string){
         switch ($table) {
             case '1':
-                DB::delete('delete * from competition where competition_id='.$string );
-                header("Refresh:0");
+                DB::delete('delete from competition where competition_id='.$string );
+                return back();
                 break;
             case '2':
-                DB::delete('delete * from country where country_id='.$string);
-                header("Refresh:0");
+                DB::delete('delete from country where country_id='.$string);
+                return back();
                 break;
             case '3':
-                DB::delete('delete * from result where result_id='.$string);
-                header("Refresh:0");
+                DB::delete('delete from result where result_id='.$string);
+                return back();
                 break;
             case '4':
-                DB::delete('delete * from sportsmen where sportsmen_id='.$string);
-                header("Refresh:0");
+                DB::delete('delete from sportsmen where sportsmen_id='.$string);
+                return back();
                 break;
             case '5':
-                DB::delete('delete * from sports_ground where sports_ground_id='.$string);
-                header("Refresh:0");
+                DB::delete('delete from sports_ground where sports_ground_id='.$string);
+                return back();
                 break;
             case '6':
-                DB::delete('delete * from sport_type where sport_type_id='.$string);
-                header("Refresh:0");
+                DB::delete('delete from sport_type where sport_type_id='.$string);
+                return back();
                 break;
         }
         
