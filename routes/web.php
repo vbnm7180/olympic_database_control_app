@@ -14,11 +14,12 @@ use Illuminate\Support\Facades\DB;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function(){
     $res = DB::select('select * from competition');
     return view('crud')->with('res', $res);
 });
+*/
 
 Route::get('/', function(){
     $res = DB::select('select * from competition');
@@ -27,3 +28,5 @@ Route::get('/', function(){
 
 
 Route::get('/select/{table}', [ CRUDController::class, 'select']);
+
+Route::get('/delete/{table}-{string}');
