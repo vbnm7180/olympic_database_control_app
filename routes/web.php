@@ -31,6 +31,6 @@ Route::get('/select/{table}', [ CRUDController::class, 'select']);
 
 Route::get('/delete/{table}-{string}', [ CRUDController::class, 'delete']);
 
-Route::get('/update/{table}-{string}', function (){
+Route::get('/change/{table}-{string}', function (){
     return view ('update');
 });

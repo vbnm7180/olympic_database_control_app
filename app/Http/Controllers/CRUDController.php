@@ -95,7 +95,33 @@ class CRUDController extends Controller
         
     }
 
-    public funtion update(){
-        
+    public function update($table,$string){
+        switch ($table) {
+            case '1':
+                DB::update('update competition set competition_id='.$string );
+                return back();
+                break;
+            case '2':
+                DB::delete('delete from country where country_id='.$string);
+                return back();
+                break;
+            case '3':
+                DB::delete('delete from result where result_id='.$string);
+                return back();
+                break;
+            case '4':
+                DB::delete('delete from sportsmen where sportsmen_id='.$string);
+                return back();
+                break;
+            case '5':
+                DB::delete('delete from sports_ground where sports_ground_id='.$string);
+                return back();
+                break;
+            case '6':
+                DB::delete('delete from sport_type where sport_type_id='.$string);
+                return back();
+                break;
+        }
+
     }
 }
