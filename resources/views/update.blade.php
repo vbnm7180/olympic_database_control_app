@@ -1,7 +1,7 @@
 @include ('header')
 
 @php
-$table=session()->get('current_table');
+$table1=session()->get('current_table');
 @endphp
 
 
@@ -14,15 +14,15 @@ $table=session()->get('current_table');
 
 
 
-	@foreach ($table[0] as $key=>$value)
+	@foreach ($table1[0] as $key=>$value)
 	<tr class="change-table__string">
 		<td class="change-table__cell">{{$key}}</td>
-		<td class="change-table__cell"><input class="change-data" type="text" name="" value="{{$value}}"></td>
+		<td class="change-table__cell"><input class="change-data" type="text" name="{{$key}}" value="{{$value}}"></td>
 	</tr>
 	@endforeach
 
 </table>
 
-<a href="/update/{{$table}}-{{current($string)}}" class="apply-update__btn">Изменить</a>
+<a href="/update/{{$table}}-{{$string}}" class="apply-update__btn">Изменить</a>
 
 @include ('footer')

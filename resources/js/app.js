@@ -7,6 +7,9 @@ document.querySelector('.apply-update__btn').onclick = function(e) {
     let url = new URL(url_string);
     for (value of data) {
 
+        console.log(value.name);
+        console.log(value.value);
+
         url.searchParams.set(value.name, value.value);
 
     }

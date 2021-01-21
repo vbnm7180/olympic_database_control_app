@@ -95,33 +95,44 @@ class CRUDController extends Controller
         
     }
 
-    public function update($table,$string){
+    public function update($table,$string, Request $request){
         switch ($table) {
             case '1':
-                DB::update('update competition set competition_id='.$string );
+                $update='update competition set competition_id='.$request->input('competition_id').', competition_date='.$request->input('competition_date').', competition_time='.$request->input('competition_time').', sport_type_id='.$request->input('sport_type_id').', sports_ground_id='.$request->input('sports_ground_id');
+                DB::update($update);
                 return back();
                 break;
             case '2':
-                DB::delete('delete from country where country_id='.$string);
+                $update='update country set country_id='.$request->input('country_id').', country_name='.$request->input('country_name');
+                DB::update($update);
                 return back();
                 break;
             case '3':
-                DB::delete('delete from result where result_id='.$string);
+                $update='update result set result_id='.$request->input('result_id').', result='.$request->input('result').', position='.$request->input('position').', competition_id='.$request->input('competition_id').', sportsmen_id='.$request->input('sportsmen_id');
+                DB::update($update);
                 return back();
                 break;
             case '4':
-                DB::delete('delete from sportsmen where sportsmen_id='.$string);
+                $update='update sportsmen set sportsmen_id='.$request->input('sportsmen_id').', sportsmen_name='.$request->input('sportsmen_name').', birthday='.$request->input('birthday').', sex='.$request->input('sex').', country_id='.$request->input('country_id').', sport_type_id='.$request->input('sport_type_id');
+                DB::update($update);
                 return back();
                 break;
             case '5':
-                DB::delete('delete from sports_ground where sports_ground_id='.$string);
+                $update='update sports_ground set sports_ground_id='.$request->input('sports_ground_id').', sports_ground_name='.$request->input('sports_ground_name').', sports_ground_address='.$request->input('sports_ground_address').', sport_type_id='.$request->input('sport_type_id');
+                DB::update($update);
                 return back();
                 break;
             case '6':
-                DB::delete('delete from sport_type where sport_type_id='.$string);
+                $update='update sport_type set sport_type_id='.$request->input('sport_type_id').', sport_name='.$request->input('sport_name').', sport_category='.$request->input('sport_category');
+                DB::update($update);
                 return back();
                 break;
         }
+
+    }
+
+    public function change($table,$string){
+        return view('update')->with('table',$table)->with('string',$string);
 
     }
 }

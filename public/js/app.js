@@ -1860,6 +1860,8 @@ document.querySelector('.apply-update__btn').onclick = function (e) {
   try {
     for (_iterator.s(); !(_step = _iterator.n()).done;) {
       value = _step.value;
+      console.log(value.name);
+      console.log(value.value);
       url.searchParams.set(value.name, value.value);
     }
   } catch (err) {
