@@ -22,7 +22,7 @@
 			reset($string);
 			@endphp
 
-			<td class="cell"><a href="/update/{{$table}}-{{current($string)}}" class="change">Изменить</a></td>
+			<td class="cell"><a href="/change/{{$table}}-{{current($string)}}" class="change">Изменить</a></td>
 
 			<td class="cell"><a href="/delete/{{$table}}-{{current($string)}}" class="delete">Удалить</a></td>
 		</tr>

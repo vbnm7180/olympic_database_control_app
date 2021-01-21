@@ -23,6 +23,6 @@ $table=session()->get('current_table');
 
 </table>
 
-<a href="/" class="apply-update__btn">Изменить</a>
+<a href="/update/{{$table}}-{{current($string)}}" class="apply-update__btn">Изменить</a>
 
 @include ('footer')

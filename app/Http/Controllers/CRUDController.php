@@ -94,4 +94,8 @@ class CRUDController extends Controller
         }
         
     }
+
+    public funtion update(){
+        
+    }
 }
