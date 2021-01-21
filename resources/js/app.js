@@ -14,5 +14,5 @@ document.querySelector('.apply-update__btn').onclick = function(e) {
 
     }
 
-    console.log(url);
+    fetch(url);
 }

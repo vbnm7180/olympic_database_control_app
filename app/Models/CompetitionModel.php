@@ -15,7 +15,7 @@ class CompetitionModel extends Model
     public $timestamps=false;
 
     protected $fillable = [
-        'competition_date','competition_time','sport_type_id','sports_ground_id'
+        'competition_id','competition_date','competition_time','sport_type_id','sports_ground_id'
     ];
 
 }

@@ -1870,7 +1870,7 @@ document.querySelector('.apply-update__btn').onclick = function (e) {
     _iterator.f();
   }
 
-  console.log(url);
+  fetch(url);
 };
 
 /***/ }),

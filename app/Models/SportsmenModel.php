@@ -15,6 +15,6 @@ class SportsmenModel extends Model
     public $timestamps=false;
 
     protected $fillable = [
-        'sportsmen_name', 'birthday','sex','country_id','sport_type_id'
+        'sportsmen_id','sportsmen_name', 'birthday','sex','country_id','sport_type_id'
     ];
 }

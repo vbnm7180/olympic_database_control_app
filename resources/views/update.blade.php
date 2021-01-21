@@ -14,7 +14,7 @@ $table1=session()->get('current_table');
 
 
 
-	@foreach ($table1[0] as $key=>$value)
+	@foreach ($table1[$string-1] as $key=>$value)
 	<tr class="change-table__string">
 		<td class="change-table__cell">{{$key}}</td>
 		<td class="change-table__cell"><input class="change-data" type="text" name="{{$key}}" value="{{$value}}"></td>

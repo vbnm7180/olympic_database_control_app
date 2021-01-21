@@ -15,7 +15,7 @@ class ResultModel extends Model
     public $timestamps=false;
 
     protected $fillable = [
-        'result', 'position','competition_id','sportsmen_id'
+        'result_id','result', 'position','competition_id','sportsmen_id'
     ];
 
 }

@@ -15,7 +15,7 @@ class SportsGroundModel extends Model
     public $timestamps=false;
 
     protected $fillable = [
-        'sports_ground_name', 'sports_ground_address','sport_type_id'
+        'sports_ground_id','sports_ground_name', 'sports_ground_address','sport_type_id'
     ];
 
 }

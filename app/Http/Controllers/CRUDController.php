@@ -96,9 +96,11 @@ class CRUDController extends Controller
     }
 
     public function update($table,$string, Request $request){
+
+        Log::info($request);
         switch ($table) {
             case '1':
-                $update='update competition set competition_id='.$request->input('competition_id').', competition_date='.$request->input('competition_date').', competition_time='.$request->input('competition_time').', sport_type_id='.$request->input('sport_type_id').', sports_ground_id='.$request->input('sports_ground_id');
+                $update='update competition set competition_id=\''.$request->input('competition_id').'\', competition_date='.$request->input('competition_date').', competition_time='.$request->input('competition_time').', sport_type_id='.$request->input('sport_type_id').', sports_ground_id='.$request->input('sports_ground_id');
                 DB::update($update);
                 return back();
                 break;
@@ -123,8 +125,11 @@ class CRUDController extends Controller
                 return back();
                 break;
             case '6':
-                $update='update sport_type set sport_type_id='.$request->input('sport_type_id').', sport_name='.$request->input('sport_name').', sport_category='.$request->input('sport_category');
+                /*
+                $update='update sport_type set sport_type_id=\''.$request->input('sport_type_id').'\', sport_name=\''.$request->input('sport_name').'\', sport_category=\''.$request->input('sport_category').'\'';
                 DB::update($update);
+                */
+                DB::update('update sport_type set sport_name= ?, sport_category=? where sport_type_id=?',[$request->input('sport_name'),$request->input('sport_category'),$request->input('sport_type_id')]);
                 return back();
                 break;
         }
