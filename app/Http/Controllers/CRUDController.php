@@ -22,7 +22,7 @@ class CRUDController extends Controller
         switch ($table) {
             case '1':
                 $res = DB::select('select * from competition');
-                session()->put('select_result',$res);
+                session()->put('current_table',$res);
                 /*
                 $res = array_map(function ($val) {
                     return (array)$val;
@@ -33,7 +33,7 @@ class CRUDController extends Controller
                 break;
             case '2':
                 $res = DB::select('select * from country');
-                session()->put('select_result',$res);
+                session()->put('current_table',$res);
                 /*
                 $res = array_map(function ($val) {
                     return (array)$val;
@@ -43,22 +43,23 @@ class CRUDController extends Controller
                 break;
             case '3':
                 $res = DB::select('select * from result');
-                session()->put('select_result',$res);
+                session()->put('current_table',$res);
                 return view('crud',['res'=> $res,'table'=>$table]);
                 break;
             case '4':
                 $res = DB::select('select * from sportsmen');
-                session()->put('select_result',$res);
+                session()->put('current_table',$res);
                 return view('crud',['res'=> $res,'table'=>$table]);
                 break;
             case '5':
                 $res = DB::select('select * from sports_ground');
-                session()->put('select_result',$res);
+                session()->put('current_table',$res);
                 return view('crud',['res'=> $res,'table'=>$table]);
                 break;
             case '6':
                 $res = DB::select('select * from sport_type');
-                session()->put('select_result',$res);
+                session()->put('current_table',$res);
+                //var_dump(session()->get('current_table'));
                 return view('crud',['res'=> $res,'table'=>$table]);
                 break;
         }
