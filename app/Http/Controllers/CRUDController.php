@@ -116,6 +116,7 @@ class CRUDController extends Controller
                 break;
             case '6':
                 DB::update('update sport_type set sport_name= ?, sport_category=? where sport_type_id=?',[$request->input('sport_name'),$request->input('sport_category'),$request->input('sport_type_id')]);
+                return view('crud')->with('res',session()->get('current_table'));
                 break;
         }
 
@@ -124,5 +125,32 @@ class CRUDController extends Controller
     public function change($table,$string){
         return view('update')->with('table',$table)->with('string',$string);
 
+    }
+
+    public function add($table){
+        return view('create')->with('table',$table);
+    }
+
+    public function create($table,Request $request){
+        switch ($table) {
+            case '1':
+                DB::insert('insert into competition (competition_date,competition_time,sport_type_id,sports_ground_id) values (?,?,?,?)',[$request->input('competition_date'),$request->input('competition_time'),$request->input('sport_type_id'),$request->input('sports_ground_id')]);
+                break;
+            case '2':
+                DB::insert('insert into country (country_name) values (?)',[$request->input('country_name')]);
+                break;
+            case '3':
+                DB::insert('insert into result (result,position,competition_id,sportsmen_id) values (?,?,?,?)',[$request->input('result'),$request->input('position'),$request->input('competition_id'),$request->input('sportsmen_id')]);
+                break;
+            case '4':
+                DB::insert('insert into sportsmen (sportsmen_name,birthday, sex,country_id,sport_type_id) values (?,?,?,?,?)',[$request->input('sportsmen_name'),$request->input('birthday'),$request->input('sex'),$request->input('country_id'),$request->input('sport_type_id')]);
+                break;
+            case '5':
+                DB::insert('insert into sports_ground (sports_ground_name,sports_ground_address,sport_type_id) values (?,?,?)',[$request->input('sports_ground_name'),$request->input('sports_ground_address'),$request->input('sport_type_id')]);
+                break;
+            case '6':
+                DB::insert('insert into sport_type (sport_name, sport_category) values (?,?)',[$request->input('sport_name'),$request->input('sport_category')]);
+                break;
+        }
     }
 }

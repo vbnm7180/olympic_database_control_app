@@ -34,3 +34,7 @@ Route::get('/delete/{table}-{string}', [ CRUDController::class, 'delete']);
 Route::get('/change/{table}-{string}', [ CRUDController::class, 'change']);
 
 Route::get('/update/{table}-{string}', [ CRUDController::class, 'update']);
+
+Route::get('/add/{table}', [ CRUDController::class, 'add']);
+
+Route::get('/create/{table}', [ CRUDController::class, 'create']);

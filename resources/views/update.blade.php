@@ -4,25 +4,27 @@
 $table1=session()->get('current_table');
 @endphp
 
+<div class="content">
+	<table class="change-table">
 
-<table class="change-table">
-
-	<tr class="change-table__string">
-		<th class="change-table__cell">Столбец</th>
-		<th class="change-table__cell">Значение</th>
-	</tr>
+		<tr class="change-table__string">
+			<th class="change-table__cell">Столбец</th>
+			<th class="change-table__cell">Значение</th>
+		</tr>
 
 
 
-	@foreach ($table1[$string-1] as $key=>$value)
-	<tr class="change-table__string">
-		<td class="change-table__cell">{{$key}}</td>
-		<td class="change-table__cell"><input class="change-data" type="text" name="{{$key}}" value="{{$value}}"></td>
-	</tr>
-	@endforeach
+		@foreach ($table1[$string-1] as $key=>$value)
+		<tr class="change-table__string">
+			<td class="change-table__cell">{{$key}}</td>
+			<td class="change-table__cell"><input class="change-data" type="text" name="{{$key}}" value="{{$value}}"></td>
+		</tr>
+		@endforeach
 
-</table>
+	</table>
 
-<a href="/update/{{$table}}-{{$string}}" class="apply-update__btn">Изменить</a>
+	<a href="/update/{{$table}}-{{$string}}" class="apply-update__btn">Изменить</a>
+
+</div>
 
 @include ('footer')

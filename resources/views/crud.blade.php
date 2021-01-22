@@ -30,6 +30,8 @@
 
 	</table>
 
+	<a href="/add/{{$table}}" class="add">Добавить строку</a>
+
 </div>
 
 @include('footer')
