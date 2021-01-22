@@ -1850,6 +1850,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 document.querySelector('.apply-update__btn').onclick = function (e) {
   e.preventDefault();
+  var reg = /\d/;
+  var table = this.href.match(reg)[0];
   var data = document.querySelectorAll('.change-data');
   var url_string = document.querySelector('.apply-update__btn').href;
   var url = new URL(url_string);
@@ -1870,7 +1872,7 @@ document.querySelector('.apply-update__btn').onclick = function (e) {
     _iterator.f();
   }
 
-  fetch(url);
+  fetch(url).then(window.location.href = '/select/' + table);
 };
 
 /***/ }),

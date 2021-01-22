@@ -100,37 +100,22 @@ class CRUDController extends Controller
         Log::info($request);
         switch ($table) {
             case '1':
-                $update='update competition set competition_id=\''.$request->input('competition_id').'\', competition_date='.$request->input('competition_date').', competition_time='.$request->input('competition_time').', sport_type_id='.$request->input('sport_type_id').', sports_ground_id='.$request->input('sports_ground_id');
-                DB::update($update);
-                return back();
+                DB::update('update competition set competition_date=?,competition_time=?,sport_type_id=?,sports_ground_id=?',[$request->input('competition_date'),$request->input('competition_time'),$request->input('sport_type_id'),$request->input('sports_ground_id')]);
                 break;
             case '2':
-                $update='update country set country_id='.$request->input('country_id').', country_name='.$request->input('country_name');
-                DB::update($update);
-                return back();
+                DB::update('update country set country_name=?',[$request->input('country_name')]);
                 break;
             case '3':
-                $update='update result set result_id='.$request->input('result_id').', result='.$request->input('result').', position='.$request->input('position').', competition_id='.$request->input('competition_id').', sportsmen_id='.$request->input('sportsmen_id');
-                DB::update($update);
-                return back();
+                DB::update('update result set result=?,position=?,competition_id=?,sportsmen_id=?',[$request->input('result'),$request->input('position'),$request->input('competition_id'),$request->input('sportsmen_id')]);
                 break;
             case '4':
-                $update='update sportsmen set sportsmen_id='.$request->input('sportsmen_id').', sportsmen_name='.$request->input('sportsmen_name').', birthday='.$request->input('birthday').', sex='.$request->input('sex').', country_id='.$request->input('country_id').', sport_type_id='.$request->input('sport_type_id');
-                DB::update($update);
-                return back();
+                DB::update('update sportsmen set sportsmen_name=?,birthday=?, sex=?,country_id=?,sport_type_id=?',[$request->input('sportsmen_name'),$request->input('birthday'),$request->input('sex'),$request->input('country_id'),$request->input('sport_type_id')]);
                 break;
             case '5':
-                $update='update sports_ground set sports_ground_id='.$request->input('sports_ground_id').', sports_ground_name='.$request->input('sports_ground_name').', sports_ground_address='.$request->input('sports_ground_address').', sport_type_id='.$request->input('sport_type_id');
-                DB::update($update);
-                return back();
+                DB::update('update sports_ground set sports_ground_name=?,sports_ground_address=?,sport_type_id=?',[$request->input('sports_ground_name'),$request->input('sports_ground_address'),$request->input('sport_type_id')]);
                 break;
             case '6':
-                /*
-                $update='update sport_type set sport_type_id=\''.$request->input('sport_type_id').'\', sport_name=\''.$request->input('sport_name').'\', sport_category=\''.$request->input('sport_category').'\'';
-                DB::update($update);
-                */
                 DB::update('update sport_type set sport_name= ?, sport_category=? where sport_type_id=?',[$request->input('sport_name'),$request->input('sport_category'),$request->input('sport_type_id')]);
-                return back();
                 break;
         }
 

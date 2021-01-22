@@ -2,6 +2,11 @@ require('./bootstrap');
 
 document.querySelector('.apply-update__btn').onclick = function(e) {
     e.preventDefault();
+
+    let reg = /\d/;
+
+    let table = this.href.match(reg)[0];
+
     let data = document.querySelectorAll('.change-data');
     let url_string = document.querySelector('.apply-update__btn').href;
     let url = new URL(url_string);
@@ -14,5 +19,5 @@ document.querySelector('.apply-update__btn').onclick = function(e) {
 
     }
 
-    fetch(url);
+    fetch(url).then(window.location.href = '/select/' + table);
 }
