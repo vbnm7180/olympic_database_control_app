@@ -103,7 +103,7 @@ class CRUDController extends Controller
                 DB::update('update competition set competition_date=?,competition_time=?,sport_type_id=?,sports_ground_id=? where competition_id=?',[$request->input('competition_date'),$request->input('competition_time'),$request->input('sport_type_id'),$request->input('sports_ground_id'),$request->input('competition_id')]);
                 break;
             case '2':
-                DB::update('update country set country_name=?',[$request->input('country_name')]);
+                DB::update('update country set country_name=? where country_id=?',[$request->input('country_name'),$request->input('country_id')]);
                 break;
             case '3':
                 DB::update('update result set result=?,position=?,competition_id=?,sportsmen_id=?',[$request->input('result'),$request->input('position'),$request->input('competition_id'),$request->input('sportsmen_id')]);
