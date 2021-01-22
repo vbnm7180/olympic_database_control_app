@@ -100,7 +100,7 @@ class CRUDController extends Controller
         Log::info($request);
         switch ($table) {
             case '1':
-                DB::update('update competition set competition_date=?,competition_time=?,sport_type_id=?,sports_ground_id=? where ',[$request->input('competition_date'),$request->input('competition_time'),$request->input('sport_type_id'),$request->input('sports_ground_id')]);
+                DB::update('update competition set competition_date=?,competition_time=?,sport_type_id=?,sports_ground_id=? where competition_id=?',[$request->input('competition_date'),$request->input('competition_time'),$request->input('sport_type_id'),$request->input('sports_ground_id'),$request->input('competition_id')]);
                 break;
             case '2':
                 DB::update('update country set country_name=?',[$request->input('country_name')]);
