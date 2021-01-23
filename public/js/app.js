@@ -1900,7 +1900,7 @@ document.querySelector('body').addEventListener('click', function click1(e) {
       _iterator.f();
     }
 
-    fetch(url);
+    fetch(url).then(window.location.href = '/select/' + table);
   }
 
   if (e.target.className === 'apply-create__btn') {
@@ -1924,15 +1924,14 @@ document.querySelector('body').addEventListener('click', function click1(e) {
         console.log(value.value);
 
         _url.searchParams.set(value.name, value.value);
-      } //etch(url).then(window.location.href = '/select/' + table).then(location.reload());
-
+      }
     } catch (err) {
       _iterator2.e(err);
     } finally {
       _iterator2.f();
     }
 
-    fetch(_url);
+    fetch(_url).then(window.location.href = '/select/' + _table);
   }
 });
 /*

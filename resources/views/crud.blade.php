@@ -1,4 +1,5 @@
 @include('header')
+@include('sidebar-crud')
 
 <div class="content">
 	<table class="table">

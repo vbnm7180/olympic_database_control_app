@@ -38,3 +38,11 @@ Route::get('/update/{table}-{string}', [ CRUDController::class, 'update']);
 Route::get('/add/{table}', [ CRUDController::class, 'add']);
 
 Route::get('/create/{table}', [ CRUDController::class, 'create']);
+
+Route::get('/search', function(){
+    return view('search',['table'=>1,'headers'=>['competition_id','competition_date','competition_time','sport_type_id','sports_ground_id']]);
+});
+
+Route::get('/search/{table}', [ CRUDController::class, 'search']);
+
+Route::get('/find/{table}', [ CRUDController::class, 'find']);

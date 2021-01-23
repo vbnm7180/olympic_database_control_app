@@ -95,6 +95,34 @@ class CRUDController extends Controller
         
     }
 
+    public function change($table,$string){
+
+        switch ($table) {
+            case '1':
+                $string=DB::select('select * from competition where competition_id='.$string );
+                break;
+            case '2':
+                $string=DB::select('select * from country where country_id='.$string);
+                break;
+            case '3':
+                $string=DB::select('select * from result where result_id='.$string);
+                break;
+            case '4':
+                $string=DB::select('select * from sportsmen where sportsmen_id='.$string);
+                break;
+            case '5':
+                $string=DB::select('select * from sports_ground where sports_ground_id='.$string);
+                break;
+            case '6':
+                $string=DB::select('select * from sport_type where sport_type_id='.$string);
+                break;
+        }
+
+        return view('update')->with('table',$table)->with('string',$string);
+
+    }
+
+
     public function update($table,$string, Request $request){
 
         Log::info($request);
@@ -116,17 +144,12 @@ class CRUDController extends Controller
                 break;
             case '6':
                 DB::update('update sport_type set sport_name= ?, sport_category=? where sport_type_id=?',[$request->input('sport_name'),$request->input('sport_category'),$request->input('sport_type_id')]);
-                return view('crud')->with('res',session()->get('current_table'));
                 break;
         }
 
     }
 
-    public function change($table,$string){
-        return view('update')->with('table',$table)->with('string',$string);
-
-    }
-
+ 
     public function add($table){
         return view('create')->with('table',$table);
     }
@@ -152,5 +175,36 @@ class CRUDController extends Controller
                 DB::insert('insert into sport_type (sport_name, sport_category) values (?,?)',[$request->input('sport_name'),$request->input('sport_category')]);
                 break;
         }
+    }
+
+    public function search($table){
+
+        switch ($table) {
+            case '1':
+                $headers=['competition_id','competition_date','competition_time','sport_type_id','sports_ground_id'];
+                break;
+            case '2':
+                $headers= ['country_id','country_name'];
+                break;
+            case '3':
+                $headers= ['result_id','result','position','competition_id','sportsmen_id'];
+                break;
+            case '4':
+                $headers= ['sportsmen_id','sportsmen_name','birthday', 'sex','country_id','sport_type_id'];
+                break;
+            case '5':
+                $headers= ['sports_ground_id','sports_ground_name','sports_ground_address','sport_type_id'];
+                break;
+            case '6':
+                $headers= ['sport_type_id','sport_name', 'sport_category'];
+                break;
+        }
+
+        return view('search')->with('headers',$headers)->with('table',$table);
+
+    }
+
+    public function find($table){
+
     }
 }

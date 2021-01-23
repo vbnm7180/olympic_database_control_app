@@ -1,4 +1,5 @@
 @include ('header')
+@include('sidebar-crud')
 
 @php
 $table1=session()->get('current_table');
@@ -12,9 +13,12 @@ $table1=session()->get('current_table');
 			<th class="change-table__cell">Значение</th>
 		</tr>
 
-
-
-		@foreach ($table1[$string-1] as $key=>$value)
+		@foreach ($string[0] as $key=>$value)
+		@if($loop->iteration==1)
+		@php
+		$string_id=$value;
+		@endphp
+		@endif
 		<tr class="change-table__string">
 			<td class="change-table__cell">{{$key}}</td>
 			<td class="change-table__cell"><input class="change-data" type="text" name="{{$key}}" value="{{$value}}"></td>
@@ -23,7 +27,7 @@ $table1=session()->get('current_table');
 
 	</table>
 
-	<a href="/update/{{$table}}-{{$string}}" class="apply-update__btn">Изменить</a>
+	<a href="/update/{{$table}}-{{$string_id}}" class="apply-update__btn">Изменить</a>
 
 </div>
 

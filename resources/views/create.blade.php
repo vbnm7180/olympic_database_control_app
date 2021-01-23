@@ -1,4 +1,5 @@
 @include ('header')
+@include('sidebar-crud')
 
 @php
 $table1=session()->get('current_table');

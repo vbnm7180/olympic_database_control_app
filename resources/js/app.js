@@ -49,7 +49,7 @@ document.querySelector('body').addEventListener('click', function click1(e) {
         }
 
         //fetch(url).then(window.location.href = '/select/' + table).then(location.reload());
-        fetch(url);
+        fetch(url).then(window.location.href = '/select/' + table);
     }
 
     if (e.target.className === 'apply-create__btn') {
@@ -71,8 +71,7 @@ document.querySelector('body').addEventListener('click', function click1(e) {
 
         }
 
-        //etch(url).then(window.location.href = '/select/' + table).then(location.reload());
-        fetch(url);
+        fetch(url).then(window.location.href = '/select/' + table);
     }
 });
 
