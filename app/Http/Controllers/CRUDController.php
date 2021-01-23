@@ -204,7 +204,46 @@ class CRUDController extends Controller
 
     }
 
-    public function find($table){
+    public function find($table,Request $request){
+        switch ($table) {
+            case '1':
+                $select='select * from competition where';
+
+                if ($request->filled('competition_id')){
+                    $select=$select.' competition_id='.$request->input('competition_id');
+                };
+                if ($request->filled('competition_date')){
+                    $select=$select.' competition_date='.$request->input('competition_date');
+                };
+                if ($request->filled('competition_time')){
+                    $select=$select.' competition_time='.$request->input('competition_time');
+                };
+                if ($request->filled('sport_type_id')){
+                    $select=$select.' sport_type_id='.$request->input('sport_type_id');
+                };
+                if ($request->filled('sports_ground_id')){
+                    $select=$select.' sports_ground_id='.$request->input('sports_ground_id');
+                };
+
+                $res=DB::select($select);
+                break;
+                
+            case '2':
+                $string=DB::select('select * from country where country_id='.$string);
+                break;
+            case '3':
+                $string=DB::select('select * from result where result_id='.$string);
+                break;
+            case '4':
+                $string=DB::select('select * from sportsmen where sportsmen_id='.$string);
+                break;
+            case '5':
+                $string=DB::select('select * from sports_ground where sports_ground_id='.$string);
+                break;
+            case '6':
+                $string=DB::select('select * from sport_type where sport_type_id='.$string);
+                break;
+        }
 
     }
 }
