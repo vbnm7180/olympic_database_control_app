@@ -1,9 +1,4 @@
-@include('header')
 @include('sidebar-search')
-
-@php
-var_dump($res);
-@endphp
 
 <div class="content">
 	<table class="table">
@@ -39,4 +34,3 @@ var_dump($res);
 
 </div>
 
-@include('footer')

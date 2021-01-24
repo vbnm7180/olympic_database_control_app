@@ -1961,7 +1961,11 @@ document.querySelector('body').addEventListener('click', function click1(e) {
     }
 
     console.log(_url2);
-    fetch(_url2);
+    fetch(_url2).then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      document.querySelector('.main').innerHTML = data.html;
+    });
   }
 });
 /*

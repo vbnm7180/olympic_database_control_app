@@ -91,7 +91,9 @@ document.querySelector('body').addEventListener('click', function click1(e) {
 
         console.log(url);
 
-        fetch(url);
+        fetch(url).then(response => response.json()).then(data => {
+            document.querySelector('.main').innerHTML = data.html;
+        });
     }
 
 

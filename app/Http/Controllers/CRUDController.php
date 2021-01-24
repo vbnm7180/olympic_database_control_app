@@ -243,7 +243,9 @@ class CRUDController extends Controller
         Log::info($select);
         $res=DB::select($select);
         Log::info($res);
-        return view('search-results')->with(['res'=>$res,'table'=>$table]);
+
+        $returnHTML = view('search-results',['res'=>$res,'table'=>$table])->render();// or method that you prefere to return data + RENDER is the key here
+        return response()->json( array('success' => true, 'html'=>$returnHTML) );
 
     }
 }
