@@ -207,43 +207,42 @@ class CRUDController extends Controller
     public function find($table,Request $request){
         switch ($table) {
             case '1':
-                $select='select * from competition where';
-
-                if ($request->filled('competition_id')){
-                    $select=$select.' competition_id='.$request->input('competition_id');
-                };
-                if ($request->filled('competition_date')){
-                    $select=$select.' competition_date='.$request->input('competition_date');
-                };
-                if ($request->filled('competition_time')){
-                    $select=$select.' competition_time='.$request->input('competition_time');
-                };
-                if ($request->filled('sport_type_id')){
-                    $select=$select.' sport_type_id='.$request->input('sport_type_id');
-                };
-                if ($request->filled('sports_ground_id')){
-                    $select=$select.' sports_ground_id='.$request->input('sports_ground_id');
-                };
-
-                $res=DB::select($select);
-                break;
-                
+                $table_name='competition';        
             case '2':
-                $string=DB::select('select * from country where country_id='.$string);
+                $table_name='country';
                 break;
             case '3':
-                $string=DB::select('select * from result where result_id='.$string);
+                $table_name='result';
                 break;
             case '4':
-                $string=DB::select('select * from sportsmen where sportsmen_id='.$string);
+                $table_name='sportsmen';
                 break;
             case '5':
-                $string=DB::select('select * from sports_ground where sports_ground_id='.$string);
+                $table_name='sports_ground';
                 break;
             case '6':
-                $string=DB::select('select * from sport_type where sport_type_id='.$string);
+                $table_name='sport_type';
                 break;
         }
+
+        $select='select * from '.$table_name.' where';
+        $loop=0;
+
+        foreach($request->all() as $key => $value ) {
+            $loop++;
+            if ($loop==1){
+            $select=$select.' '.$key.'=\''.$value.'\'';
+            }
+            else{
+                $select=$select.' and '.$key.'=\''.$value.'\'';
+            }
+
+        }
+        
+        Log::info($select);
+        $res=DB::select($select);
+        Log::info($res);
+        return view('search-results')->with(['res'=>$res,'table'=>$table]);
 
     }
 }

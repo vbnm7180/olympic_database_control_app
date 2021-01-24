@@ -1933,6 +1933,36 @@ document.querySelector('body').addEventListener('click', function click1(e) {
 
     fetch(_url).then(window.location.href = '/select/' + _table);
   }
+
+  if (e.target.className === 'find__btn') {
+    e.preventDefault();
+
+    var _data2 = document.querySelectorAll('.search-data');
+
+    var _url_string2 = e.target.closest('.find__btn').href;
+
+    var _url2 = new URL(_url_string2);
+
+    var _iterator3 = _createForOfIteratorHelper(_data2),
+        _step3;
+
+    try {
+      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+        param = _step3.value;
+
+        if (param.value !== '') {
+          _url2.searchParams.set(param.name, param.value);
+        }
+      }
+    } catch (err) {
+      _iterator3.e(err);
+    } finally {
+      _iterator3.f();
+    }
+
+    console.log(_url2);
+    fetch(_url2);
+  }
 });
 /*
 document.querySelector('body').addEventListener('click', function click2(e) {

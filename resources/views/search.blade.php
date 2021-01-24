@@ -6,23 +6,23 @@ $table1=session()->get('current_table');
 @endphp
 
 <div class="content">
-	<table class="change-table">
+	<table class="search-table">
 
-		<tr class="change-table__string">
-			<th class="change-table__cell">Столбец</th>
-			<th class="change-table__cell">Значение</th>
+		<tr class="search-table__string">
+			<th class="search-table__cell">Столбец</th>
+			<th class="search-table__cell">Значение</th>
 		</tr>
 
 		@foreach ($headers as $header)
-		<tr class="change-table__string">
-			<td class="change-table__cell">{{$header}}</td>
-			<td class="change-table__cell"><input class="change-data" type="text" name="{{$header}}" value=""></td>
+		<tr class="search-table__string">
+			<td class="search-table__cell">{{$header}}</td>
+			<td class="search-table__cell"><input class="search-data" type="text" name="{{$header}}" value=""></td>
 		</tr>
 		@endforeach
 
 	</table>
 
-	<a href="/find/{{$table}}" class="apply-update__btn">Найти</a>
+	<a href="/find/{{$table}}" class="find__btn">Найти</a>
 
 </div>
 

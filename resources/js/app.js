@@ -73,7 +73,31 @@ document.querySelector('body').addEventListener('click', function click1(e) {
 
         fetch(url).then(window.location.href = '/select/' + table);
     }
+
+    if (e.target.className === 'find__btn') {
+        e.preventDefault();
+
+        let data = document.querySelectorAll('.search-data');
+        let url_string = e.target.closest('.find__btn').href;
+        let url = new URL(url_string);
+
+        for (param of data) {
+
+            if (param.value !== '') {
+                url.searchParams.set(param.name, param.value);
+            }
+
+        }
+
+        console.log(url);
+
+        fetch(url);
+    }
+
+
 });
+
+
 
 /*
 document.querySelector('body').addEventListener('click', function click2(e) {
