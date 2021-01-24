@@ -12,6 +12,6 @@
 	<div class="header">
 		<a href="/" class="CRUD">CRUD</a>
 		<a href="/search" class="search">Поиск</a>
-		<a href="" class="requests">Запросы к базе</a>
+		<a href="/requests" class="requests">Запросы к базе</a>
 	</div>
 	<div class="main">

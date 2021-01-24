@@ -46,3 +46,7 @@ Route::get('/search', function(){
 Route::get('/search/{table}', [ CRUDController::class, 'search']);
 
 Route::get('/find/{table}', [ CRUDController::class, 'find']);
+
+Route::get('/requests', function(){return view('requests');});
+
+Route::get('/request/{id}', [ CRUDController::class, 'request']);
