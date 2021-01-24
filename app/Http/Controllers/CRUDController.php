@@ -208,6 +208,7 @@ class CRUDController extends Controller
         switch ($table) {
             case '1':
                 $table_name='competition';        
+                break;
             case '2':
                 $table_name='country';
                 break;
