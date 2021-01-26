@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\DB;
 
 class RequestController extends Controller
 {
+    //Выполнение запроса к базе данных
     public function request($id)
     {
-
         switch ($id) {
             case '1':
                 $res=DB::select('SELECT COUNT(result.position) AS \'Число медалей\', country.country_name FROM result JOIN sportsmen ON result.sportsmen_id=sportsmen.sportsmen_id JOIN country ON sportsmen.country_id=country.country_id WHERE result.position=1 or 2 or 3 GROUP BY country.country_id');
@@ -21,8 +21,6 @@ class RequestController extends Controller
                 $res= DB::select('SELECT AVG(DATEDIFF(CURRENT_DATE, sportsmen.birthday)/365) AS \'Средний возраст\', country.country_name FROM sportsmen JOIN country ON sportsmen.country_id=country.country_id GROUP BY country.country_id');
                 break;
         }
-
         return view('request-results')->with('res',$res);
-
     }
 }

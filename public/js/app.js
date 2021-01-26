@@ -1848,15 +1848,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-document.querySelector('body').addEventListener('click', function click1(e) {
-  console.log(e.target.className);
-
+document.querySelector('body').addEventListener('click', function (e) {
+  //Кнопка Изменить данные строки
   if (e.target.className === 'apply-update__btn') {
     e.preventDefault();
     var reg = /\d/;
-    var table = e.target.href.match(reg)[0];
-    var data = document.querySelectorAll('.change-data');
-    var url_string = document.querySelector('.apply-update__btn').href;
+    var table = e.target.href.match(reg)[0]; //Выбираем все input
+
+    var data = document.querySelectorAll('.change-data'); //Выбираем ссылку кнопки
+
+    var url_string = document.querySelector('.apply-update__btn').href; //Создаем объект URL и передаем в него параметры
+
     var url = new URL(url_string);
 
     var _iterator = _createForOfIteratorHelper(data),
@@ -1866,7 +1868,8 @@ document.querySelector('body').addEventListener('click', function click1(e) {
       for (_iterator.s(); !(_step = _iterator.n()).done;) {
         value = _step.value;
         url.searchParams.set(value.name, value.value);
-      }
+      } //Делаем ajax запрос и перенаправление
+
     } catch (err) {
       _iterator.e(err);
     } finally {
@@ -1874,16 +1877,18 @@ document.querySelector('body').addEventListener('click', function click1(e) {
     }
 
     fetch(url).then(window.location.href = '/select/' + table);
-  }
+  } //Кнопка Добавить сторку
+
 
   if (e.target.className === 'apply-create__btn') {
     e.preventDefault();
     var _reg = /\d/;
-    var _table = e.target.href.match(_reg)[0];
+    var _table = e.target.href.match(_reg)[0]; //Выбираем все input
 
-    var _data = document.querySelectorAll('.change-data');
+    var _data = document.querySelectorAll('.change-data'); //Выбираем ссылку кнопки
 
-    var _url_string = e.target.closest('.apply-create__btn').href;
+
+    var _url_string = e.target.closest('.apply-create__btn').href; //Создаем объект URL и передаем в него параметры
 
     var _url = new URL(_url_string);
 
@@ -1895,7 +1900,8 @@ document.querySelector('body').addEventListener('click', function click1(e) {
         value = _step2.value;
 
         _url.searchParams.set(value.name, value.value);
-      }
+      } //Делаем ajax запрос и перенаправление
+
     } catch (err) {
       _iterator2.e(err);
     } finally {
@@ -1903,14 +1909,16 @@ document.querySelector('body').addEventListener('click', function click1(e) {
     }
 
     fetch(_url).then(window.location.href = '/select/' + _table);
-  }
+  } //Кнопка найти строки
+
 
   if (e.target.className === 'find__btn') {
-    e.preventDefault();
+    e.preventDefault(); //Выбираем все input
 
-    var _data2 = document.querySelectorAll('.search-data');
+    var _data2 = document.querySelectorAll('.search-data'); //Выбираем ссылку кнопки
 
-    var _url_string2 = e.target.closest('.find__btn').href;
+
+    var _url_string2 = e.target.closest('.find__btn').href; //Создаем объект URL и передаем в него параметры
 
     var _url2 = new URL(_url_string2);
 
@@ -1924,7 +1932,8 @@ document.querySelector('body').addEventListener('click', function click1(e) {
         if (param.value !== '') {
           _url2.searchParams.set(param.name, param.value);
         }
-      }
+      } //Делаем ajax запрос и перенаправление
+
     } catch (err) {
       _iterator3.e(err);
     } finally {

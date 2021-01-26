@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
 {
+    //Переход на форму поиска по таблице базы данных
     public function search($table)
     {
-
         switch ($table) {
             case '1':
                 $headers = ['competition_id', 'competition_date', 'competition_time', 'sport_type_id', 'sports_ground_id'];
@@ -30,10 +30,10 @@ class SearchController extends Controller
                 $headers = ['sport_type_id', 'sport_name', 'sport_category'];
                 break;
         }
-
         return view('search')->with('headers', $headers)->with('table', $table);
     }
 
+    //Поиск строк в базе данных
     public function find($table, Request $request)
     {
         switch ($table) {
@@ -58,8 +58,10 @@ class SearchController extends Controller
         }
 
         $select = 'SELECT * from ' . $table_name . ' where';
+        //Для удаления and перед первым параметром
         $loop = 0;
 
+        //Добавление параметров поиска, введенных пользователем в select
         foreach ($request->all() as $key => $value) {
             $loop++;
             if ($loop == 1) {
@@ -71,6 +73,7 @@ class SearchController extends Controller
 
         $res = DB::select($select);
 
+        //Возврат html-кода представления для его отображения на странице через js
         $returnHTML = view('search-results', ['res' => $res, 'table' => $table])->render(); // or method that you prefere to return data + RENDER is the key here
         return response()->json(array('success' => true, 'html' => $returnHTML));
     }

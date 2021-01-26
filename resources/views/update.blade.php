@@ -4,16 +4,21 @@
 <div class="content">
 	<table class="change-table">
 
+	    <--Шапка формы-->
 		<tr class="change-table__string">
 			<th class="change-table__cell">Столбец</th>
 			<th class="change-table__cell">Значение</th>
 		</tr>
 
+        <--Строки формы-->
 		@foreach ($string[0] as $key=>$value)
+
 		@if($loop->iteration==1)
+
 		@php
 		$string_id=$value;
 		@endphp
+		
 		@endif
 		<tr class="change-table__string">
 			<td class="change-table__cell">{{$key}}</td>

@@ -11,6 +11,7 @@ use Illuminate\Routing\Redirector;
 
 class CRUDController extends Controller
 {
+    //Выбор всех данных таблицы
     public function select($table)
     {
         switch ($table) {
@@ -41,6 +42,7 @@ class CRUDController extends Controller
         }
     }
 
+    //Удаление строки из таблицы
     public function delete($table, $string)
     {
         switch ($table) {
@@ -71,9 +73,9 @@ class CRUDController extends Controller
         }
     }
 
+    //Переход на форму изменения данных строки таблицы
     public function change($table, $string)
     {
-
         switch ($table) {
             case '1':
                 $string = DB::select('SELECT * FROM competition WHERE competition_id=' . $string);
@@ -94,14 +96,12 @@ class CRUDController extends Controller
                 $string = DB::select('SELECT * FROM sport_type WHERE sport_type_id=' . $string);
                 break;
         }
-
         return view('update')->with('table', $table)->with('string', $string);
     }
 
-
+    //Изменение данных строки таблицы
     public function update($table, $string, Request $request)
     {
-
         switch ($table) {
             case '1':
                 DB::update('UPDATE competition SET competition_date=?,competition_time=?,sport_type_id=?,sports_ground_id=? WHERE competition_id=?', [$request->input('competition_date'), $request->input('competition_time'), $request->input('sport_type_id'), $request->input('sports_ground_id'), $request->input('competition_id')]);
@@ -124,7 +124,7 @@ class CRUDController extends Controller
         }
     }
 
-
+    //Переход на форму добавления новой строки таблицы
     public function add($table)
     {
         switch ($table) {
@@ -151,6 +151,7 @@ class CRUDController extends Controller
         return view('create')->with('headers', $headers)->with('table', $table);
     }
 
+    //Добавление новой строки в таблицу
     public function create($table, Request $request)
     {
         switch ($table) {
@@ -174,5 +175,4 @@ class CRUDController extends Controller
                 break;
         }
     }
-
 }
