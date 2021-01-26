@@ -6,12 +6,6 @@ use Illuminate\Support\Facades\Log;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\CompetitionModel;
-use App\Models\CountryModel;
-use App\Models\ResultModel;
-use App\Models\SportsGroundModel;
-use App\Models\SportsmenModel;
-use App\Models\SportTypeModel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 
@@ -23,22 +17,11 @@ class CRUDController extends Controller
             case '1':
                 $res = DB::select('SELECT * FROM competition');
                 session()->put('current_table', $res);
-                /*
-                $res = array_map(function ($val) {
-                    return (array)$val;
-                }, $res);
-                Log::info($res);
-                */
                 return view('crud', ['res' => $res, 'table' => $table]);
                 break;
             case '2':
                 $res = DB::select('SELECT * FROM country');
                 session()->put('current_table', $res);
-                /*
-                $res = array_map(function ($val) {
-                    return (array)$val;
-                }, $res);
-                */
                 return view('crud', ['res' => $res, 'table' => $table]);
                 break;
             case '3':
@@ -59,7 +42,6 @@ class CRUDController extends Controller
             case '6':
                 $res = DB::select('SELECT * FROM sport_type');
                 session()->put('current_table', $res);
-                //var_dump(session()->get('current_table'));
                 return view('crud', ['res' => $res, 'table' => $table]);
                 break;
         }
@@ -126,7 +108,6 @@ class CRUDController extends Controller
     public function update($table, $string, Request $request)
     {
 
-        Log::info($request);
         switch ($table) {
             case '1':
                 DB::update('UPDATE competition SET competition_date=?,competition_time=?,sport_type_id=?,sports_ground_id=? WHERE competition_id=?', [$request->input('competition_date'), $request->input('competition_time'), $request->input('sport_type_id'), $request->input('sports_ground_id'), $request->input('competition_id')]);
@@ -179,92 +160,4 @@ class CRUDController extends Controller
         }
     }
 
-    public function search($table)
-    {
-
-        switch ($table) {
-            case '1':
-                $headers = ['competition_id', 'competition_date', 'competition_time', 'sport_type_id', 'sports_ground_id'];
-                break;
-            case '2':
-                $headers = ['country_id', 'country_name'];
-                break;
-            case '3':
-                $headers = ['result_id', 'result', 'position', 'competition_id', 'sportsmen_id'];
-                break;
-            case '4':
-                $headers = ['sportsmen_id', 'sportsmen_name', 'birthday', 'sex', 'country_id', 'sport_type_id'];
-                break;
-            case '5':
-                $headers = ['sports_ground_id', 'sports_ground_name', 'sports_ground_address', 'sport_type_id'];
-                break;
-            case '6':
-                $headers = ['sport_type_id', 'sport_name', 'sport_category'];
-                break;
-        }
-
-        return view('search')->with('headers', $headers)->with('table', $table);
-    }
-
-    public function find($table, Request $request)
-    {
-        switch ($table) {
-            case '1':
-                $table_name = 'competition';
-                break;
-            case '2':
-                $table_name = 'country';
-                break;
-            case '3':
-                $table_name = 'result';
-                break;
-            case '4':
-                $table_name = 'sportsmen';
-                break;
-            case '5':
-                $table_name = 'sports_ground';
-                break;
-            case '6':
-                $table_name = 'sport_type';
-                break;
-        }
-
-        $select = 'SELECT * from ' . $table_name . ' where';
-        $loop = 0;
-
-        foreach ($request->all() as $key => $value) {
-            $loop++;
-            if ($loop == 1) {
-                $select = $select . ' ' . $key . '=\'' . $value . '\'';
-            } else {
-                $select = $select . ' and ' . $key . '=\'' . $value . '\'';
-            }
-        }
-
-        Log::info($select);
-        $res = DB::select($select);
-        Log::info($res);
-
-        $returnHTML = view('search-results', ['res' => $res, 'table' => $table])->render(); // or method that you prefere to return data + RENDER is the key here
-        return response()->json(array('success' => true, 'html' => $returnHTML));
-    }
-
-    public function request($id)
-    {
-
-        switch ($id) {
-            case '1':
-                $res=DB::select('SELECT COUNT(result.position) AS \'Число медалей\', country.country_name FROM result JOIN sportsmen ON result.sportsmen_id=sportsmen.sportsmen_id JOIN country ON sportsmen.country_id=country.country_id WHERE result.position=1 or 2 or 3 GROUP BY country.country_id');
-                break;
-            case '2':
-                $res=DB::select('SELECT sportsmen.sportsmen_name, sportsmen.birthday, sportsmen.sex, country.country_name, sport_type.sport_name,result.result,result.position FROM result JOIN sportsmen ON result.sportsmen_id=sportsmen.sportsmen_id JOIN country ON sportsmen.country_id=country.country_id JOIN sport_type ON sportsmen.sport_type_id=sport_type.sport_type_id ORDER BY sport_type.sport_type_id,result.position');
-                break;
-            case '3':
-                $res= DB::select('SELECT AVG(DATEDIFF(CURRENT_DATE, sportsmen.birthday)/365) AS \'Средний возраст\', country.country_name FROM sportsmen JOIN country ON sportsmen.country_id=country.country_id GROUP BY country.country_id');
-                break;
-        }
-
-        return view('request-results')->with('res',$res);
-
-    }
 }
