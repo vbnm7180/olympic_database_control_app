@@ -14,18 +14,11 @@ use Illuminate\Support\Facades\DB;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/', function(){
-    $res = DB::select('select * from competition');
-    return view('crud')->with('res', $res);
-});
-*/
 
 Route::get('/', function(){
     $res = DB::select('select * from competition');
     return view('crud',['res'=> $res,'table'=>1]);
 });
-
 
 Route::get('/select/{table}', [ CRUDController::class, 'select']);
 
@@ -43,10 +36,10 @@ Route::get('/search', function(){
     return view('search',['table'=>1,'headers'=>['competition_id','competition_date','competition_time','sport_type_id','sports_ground_id']]);
 });
 
-Route::get('/search/{table}', [ CRUDController::class, 'search']);
+Route::get('/search/{table}', [ SearchController::class, 'search']);
 
-Route::get('/find/{table}', [ CRUDController::class, 'find']);
+Route::get('/find/{table}', [ SearchController::class, 'find']);
 
 Route::get('/requests', function(){return view('requests');});
 
-Route::get('/request/{id}', [ CRUDController::class, 'request']);
+Route::get('/request/{id}', [ RequestController::class, 'request']);
