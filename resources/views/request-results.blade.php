@@ -12,7 +12,7 @@
 			@endforeach
 		</tr>
 
-		{{ --Строки таблицы-- }}
+		{{-- Строки таблицы --}}
 		@foreach($res as $string)
 		<tr class="string">
 

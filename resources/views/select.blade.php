@@ -5,6 +5,9 @@
 <div class="content">
 	<table class="table">
 
+	<colgroup>
+	</colgroup>
+
 		{{-- Шапка таблицы --}}
 		<tr class="string">
 			@foreach($res[0] as $key=>$value)
@@ -31,7 +34,7 @@
 
 	</table>
 
-	<a href="/add/{{$table}}" class="add">Добавить строку</a>
+	<a href="/add/{{$table}}" class="add">+Добавить строку</a>
 
 </div>
 

@@ -3,25 +3,25 @@
 
 {{-- Форма добавления строки --}}
 <div class="content">
-	<table class="change-table">
+	<table class="table">
 
 		{{-- Шапка формы --}}
-		<tr class="change-table__string">
-			<th class="change-table__cell">Столбец</th>
-			<th class="change-table__cell">Значение</th>
+		<tr class="table__string">
+			<th class="cell">Столбец</th>
+			<th class="cell">Значение</th>
 		</tr>
 
 		{{-- Строки формы --}}
 		@foreach ($headers as $header)
 		@if ($loop->iteration==1)
 		<tr class="change-table__string">
-			<td class="change-table__cell">{{$header}}</td>
-			<td class="change-table__cell"><input class="change-data" type="text" name="{{$header}}" value="Это поле заполняется автоматически" disabled></td>
+			<td class="cell">{{$header}}</td>
+			<td class="cell"><input class="change-data" type="text" name="{{$header}}" value="Это поле заполняется автоматически" disabled></td>
 		</tr>
 		@else
-		<tr class="change-table__string">
-			<td class="change-table__cell">{{$header}}</td>
-			<td class="change-table__cell"><input class="change-data" type="text" name="{{$header}}" value=""></td>
+		<tr class="table__string">
+			<td class="cell">{{$header}}</td>
+			<td class="cell"><input class="change-data" type="text" name="{{$header}}" value=""></td>
 		</tr>
 		@endif
 
@@ -29,7 +29,7 @@
 
 	</table>
 
-	<a href="/create/{{$table}}" class="apply-create__btn">Добавить строку</a>
+	<a href="/create/{{$table}}" class="apply-create__btn">+Добавить строку</a>
 </div>
 
 @include ('footer')

@@ -3,19 +3,19 @@
 
 {{-- Форма поиска по бд --}}
 <div class="content">
-	<table class="search-table">
+	<table class="table">
 
 		{{-- Шапка формы --}}
-		<tr class="search-table__string">
-			<th class="search-table__cell">Столбец</th>
-			<th class="search-table__cell">Значение</th>
+		<tr class="table__string">
+			<th class="cell">Столбец</th>
+			<th class="cell">Значение</th>
 		</tr>
 
 		{{-- Строки таблицы --}}
 		@foreach ($headers as $header)
-		<tr class="search-table__string">
-			<td class="search-table__cell">{{$header}}</td>
-			<td class="search-table__cell"><input class="search-data" type="text" name="{{$header}}" value=""></td>
+		<tr class="table__string">
+			<td class="cell">{{$header}}</td>
+			<td class="cell"><input class="search-data" type="text" name="{{$header}}" value=""></td>
 		</tr>
 		@endforeach
 

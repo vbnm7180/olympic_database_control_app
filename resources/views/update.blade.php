@@ -3,12 +3,12 @@
 
 {{-- Форма изменения строки --}}
 <div class="content">
-	<table class="change-table">
+	<table class="table">
 
 	    {{-- Шапка формы --}}
-		<tr class="change-table__string">
-			<th class="change-table__cell">Столбец</th>
-			<th class="change-table__cell">Значение</th>
+		<tr class="table__string">
+			<th class="cell">Столбец</th>
+			<th class="cell">Значение</th>
 		</tr>
 
         {{-- Строки формы --}}
@@ -21,9 +21,9 @@
 		@endphp
 		
 		@endif
-		<tr class="change-table__string">
-			<td class="change-table__cell">{{$key}}</td>
-			<td class="change-table__cell"><input class="change-data" type="text" name="{{$key}}" value="{{$value}}"></td>
+		<tr class="table__string">
+			<td class="cell">{{$key}}</td>
+			<td class="cell"><input class="change-data" type="text" name="{{$key}}" value="{{$value}}"></td>
 		</tr>
 		@endforeach
 

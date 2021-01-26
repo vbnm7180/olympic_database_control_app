@@ -29,21 +29,31 @@ body {
     height: 300px;
 }
 
-.content {}
+.content {
+    display: flex;
+    flex-direction: column;
+}
 
 .table {
+    table-layout: auto;
     font-size: 14px;
 }
 
-.string {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-}
-
 .cell {
-    display: flex;
-    width: 170px;
     border: 1px solid #000;
     padding: 5px;
+}
+
+.add,
+.find__btn,
+.apply-update__btn,
+.request__btn {
+    width: fit-content;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.change-data,
+.search-data {
+    width: 250px;
 }
