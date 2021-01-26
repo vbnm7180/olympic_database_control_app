@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\DB;
 
 Route::get('/', function(){
     $res = DB::select('select * from competition');
-    return view('crud',['res'=> $res,'table'=>1]);
+    return view('select',['res'=> $res,'table'=>1]);
 });
 
 Route::get('/select/{table}', [ CRUDController::class, 'select']);

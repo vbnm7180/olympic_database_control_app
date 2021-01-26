@@ -16,33 +16,27 @@ class CRUDController extends Controller
         switch ($table) {
             case '1':
                 $res = DB::select('SELECT * FROM competition');
-                session()->put('current_table', $res);
-                return view('crud', ['res' => $res, 'table' => $table]);
+                return view('select', ['res' => $res, 'table' => $table]);
                 break;
             case '2':
                 $res = DB::select('SELECT * FROM country');
-                session()->put('current_table', $res);
-                return view('crud', ['res' => $res, 'table' => $table]);
+                return view('select', ['res' => $res, 'table' => $table]);
                 break;
             case '3':
                 $res = DB::select('SELECT * FROM result');
-                session()->put('current_table', $res);
-                return view('crud', ['res' => $res, 'table' => $table]);
+                return view('select', ['res' => $res, 'table' => $table]);
                 break;
             case '4':
                 $res = DB::select('SELECT * FROM sportsmen');
-                session()->put('current_table', $res);
-                return view('crud', ['res' => $res, 'table' => $table]);
+                return view('select', ['res' => $res, 'table' => $table]);
                 break;
             case '5':
                 $res = DB::select('SELECT * FROM sports_ground');
-                session()->put('current_table', $res);
-                return view('crud', ['res' => $res, 'table' => $table]);
+                return view('select', ['res' => $res, 'table' => $table]);
                 break;
             case '6':
                 $res = DB::select('SELECT * FROM sport_type');
-                session()->put('current_table', $res);
-                return view('crud', ['res' => $res, 'table' => $table]);
+                return view('select', ['res' => $res, 'table' => $table]);
                 break;
         }
     }
@@ -133,7 +127,28 @@ class CRUDController extends Controller
 
     public function add($table)
     {
-        return view('create')->with('table', $table);
+        switch ($table) {
+            case '1':
+                $headers = ['competition_id', 'competition_date', 'competition_time', 'sport_type_id', 'sports_ground_id'];
+                break;
+            case '2':
+                $headers = ['country_id', 'country_name'];
+                break;
+            case '3':
+                $headers = ['result_id', 'result', 'position', 'competition_id', 'sportsmen_id'];
+                break;
+            case '4':
+                $headers = ['sportsmen_id', 'sportsmen_name', 'birthday', 'sex', 'country_id', 'sport_type_id'];
+                break;
+            case '5':
+                $headers = ['sports_ground_id', 'sports_ground_name', 'sports_ground_address', 'sport_type_id'];
+                break;
+            case '6':
+                $headers = ['sport_type_id', 'sport_name', 'sport_category'];
+                break;
+        }
+
+        return view('create')->with('headers', $headers)->with('table', $table);
     }
 
     public function create($table, Request $request)

@@ -12,11 +12,7 @@
 		<tr class="string">
 
 			@foreach($string as $value)
-
-
-
 			<td class="cell">{{$value}}</td>
-
 			@endforeach
 
 			@php
@@ -24,7 +20,6 @@
 			@endphp
 
 			<td class="cell"><a href="/change/{{$table}}-{{current($string)}}" class="change">Изменить</a></td>
-
 			<td class="cell"><a href="/delete/{{$table}}-{{current($string)}}" class="delete">Удалить</a></td>
 		</tr>
 		@endforeach

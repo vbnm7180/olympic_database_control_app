@@ -1,10 +1,6 @@
 @include ('header')
 @include('sidebar-search')
 
-@php
-$table1=session()->get('current_table');
-@endphp
-
 <div class="content">
 	<table class="search-table">
 

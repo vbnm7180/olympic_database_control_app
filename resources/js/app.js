@@ -1,7 +1,7 @@
 require('./bootstrap');
 
-document.querySelector('body').addEventListener('click', function click1(e) {
-    console.log(e.target.className);
+document.querySelector('body').addEventListener('click', function(e) {
+
     if (e.target.className === 'apply-update__btn') {
 
         e.preventDefault();

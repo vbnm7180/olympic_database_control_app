@@ -1,10 +1,6 @@
 @include ('header')
 @include('sidebar-crud')
 
-@php
-$table1=session()->get('current_table');
-@endphp
-
 <div class="content">
 	<table class="change-table">
 
@@ -13,21 +9,18 @@ $table1=session()->get('current_table');
 			<th class="change-table__cell">Значение</th>
 		</tr>
 
-
-
-		@foreach ($table1[0] as $key=>$value)
+		@foreach ($headers as $header)
 		@if ($loop->iteration==1)
 		<tr class="change-table__string">
-			<td class="change-table__cell">{{$key}}</td>
-			<td class="change-table__cell"><input class="change-data" type="text" name="{{$key}}" value="Это поле заполняется автоматически" disabled></td>
+			<td class="change-table__cell">{{$header}}</td>
+			<td class="change-table__cell"><input class="change-data" type="text" name="{{$header}}" value="Это поле заполняется автоматически" disabled></td>
 		</tr>
 		@else
 		<tr class="change-table__string">
-			<td class="change-table__cell">{{$key}}</td>
-			<td class="change-table__cell"><input class="change-data" type="text" name="{{$key}}" value=""></td>
+			<td class="change-table__cell">{{$header}}</td>
+			<td class="change-table__cell"><input class="change-data" type="text" name="{{$header}}" value=""></td>
 		</tr>
 		@endif
-
 
 		@endforeach
 
