@@ -1,16 +1,17 @@
 @include('sidebar-search')
 
+{{-- Страница с результатами поиска по бд --}}
 <div class="content">
 	<table class="table">
 
-	    <--Шапка таблицы-->
+		{{-- Шапка таблицы --}}
 		<tr class="string">
 			@foreach($res[0] as $key=>$value)
 			<th class="cell">{{$key}}</th>
 			@endforeach
 		</tr>
 
-		<--Строки таблицы-->
+		{{-- Строки таблицы --}}
 		@foreach($res as $string)
 		<tr class="string">
 
@@ -30,4 +31,3 @@
 	</table>
 
 </div>
-

@@ -1,16 +1,17 @@
 @include ('header')
 @include('sidebar-search')
 
+{{-- Форма поиска по бд --}}
 <div class="content">
 	<table class="search-table">
 
-	    <--Шапка формы-->
+		{{-- Шапка формы --}}
 		<tr class="search-table__string">
 			<th class="search-table__cell">Столбец</th>
 			<th class="search-table__cell">Значение</th>
 		</tr>
 
-		<--Строки таблицы-->
+		{{-- Строки таблицы --}}
 		@foreach ($headers as $header)
 		<tr class="search-table__string">
 			<td class="search-table__cell">{{$header}}</td>

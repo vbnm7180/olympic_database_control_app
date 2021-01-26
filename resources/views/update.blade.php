@@ -1,16 +1,17 @@
 @include ('header')
 @include('sidebar-crud')
 
+{{-- Форма изменения строки --}}
 <div class="content">
 	<table class="change-table">
 
-	    <--Шапка формы-->
+	    {{-- Шапка формы --}}
 		<tr class="change-table__string">
 			<th class="change-table__cell">Столбец</th>
 			<th class="change-table__cell">Значение</th>
 		</tr>
 
-        <--Строки формы-->
+        {{-- Строки формы --}}
 		@foreach ($string[0] as $key=>$value)
 
 		@if($loop->iteration==1)

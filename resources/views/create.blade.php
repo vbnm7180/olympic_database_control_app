@@ -1,16 +1,17 @@
 @include ('header')
 @include('sidebar-crud')
 
+{{-- Форма добавления строки --}}
 <div class="content">
 	<table class="change-table">
-         
-	    /* Шапка формы */
+
+		{{-- Шапка формы --}}
 		<tr class="change-table__string">
 			<th class="change-table__cell">Столбец</th>
 			<th class="change-table__cell">Значение</th>
 		</tr>
 
-        <-- Строки формы -->
+		{{-- Строки формы --}}
 		@foreach ($headers as $header)
 		@if ($loop->iteration==1)
 		<tr class="change-table__string">
