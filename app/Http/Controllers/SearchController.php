@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
 {
@@ -68,9 +69,7 @@ class SearchController extends Controller
             }
         }
 
-        Log::info($select);
         $res = DB::select($select);
-        Log::info($res);
 
         $returnHTML = view('search-results', ['res' => $res, 'table' => $table])->render(); // or method that you prefere to return data + RENDER is the key here
         return response()->json(array('success' => true, 'html' => $returnHTML));
