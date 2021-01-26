@@ -1847,30 +1847,6 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-/*
-document.querySelector('.apply-update__btn').onclick = function(e) {
-    e.preventDefault();
-
-    let reg = /\d/;
-
-    let table = this.href.match(reg)[0];
-
-    let data = document.querySelectorAll('.change-data');
-    let url_string = document.querySelector('.apply-update__btn').href;
-    let url = new URL(url_string);
-    for (value of data) {
-
-        console.log(value.name);
-        console.log(value.value);
-
-        url.searchParams.set(value.name, value.value);
-
-    }
-
-    fetch(url).then(window.location.href = '/select/' + table);
-}
-*/
-
 
 document.querySelector('body').addEventListener('click', function click1(e) {
   console.log(e.target.className);
@@ -1889,11 +1865,8 @@ document.querySelector('body').addEventListener('click', function click1(e) {
     try {
       for (_iterator.s(); !(_step = _iterator.n()).done;) {
         value = _step.value;
-        console.log(value.name);
-        console.log(value.value);
         url.searchParams.set(value.name, value.value);
-      } //fetch(url).then(window.location.href = '/select/' + table).then(location.reload());
-
+      }
     } catch (err) {
       _iterator.e(err);
     } finally {
@@ -1920,8 +1893,6 @@ document.querySelector('body').addEventListener('click', function click1(e) {
     try {
       for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
         value = _step2.value;
-        console.log(value.name);
-        console.log(value.value);
 
         _url.searchParams.set(value.name, value.value);
       }
@@ -1960,7 +1931,6 @@ document.querySelector('body').addEventListener('click', function click1(e) {
       _iterator3.f();
     }
 
-    console.log(_url2);
     fetch(_url2).then(function (response) {
       return response.json();
     }).then(function (data) {
@@ -1968,59 +1938,6 @@ document.querySelector('body').addEventListener('click', function click1(e) {
     });
   }
 });
-/*
-document.querySelector('body').addEventListener('click', function click2(e) {
-
-    if (e.target.className === 'apply-create__btn') {
-        e.target.preventDefault();
-
-        let reg = /\d/;
-
-        let table = this.href.match(reg)[0];
-
-        let data = document.querySelectorAll('.change-data');
-        let url_string = e.target.closest('.apply-create__btn').href;
-        let url = new URL(url_string);
-        for (value of data) {
-
-            console.log(value.name);
-            console.log(value.value);
-
-            url.searchParams.set(value.name, value.value);
-
-        }
-
-        fetch(url).then(window.location.href = '/select/' + table);
-    }
-});
-*/
-
-/*
-document.querySelector('.apply-create__btn').onclick = function(e) {
-    console.log(1);
-    e.preventDefault();
-    /*
-        let reg = /\d/;
-
-        let table = this.href.match(reg)[0];
-
-        let data = document.querySelectorAll('.change-data');
-        let url_string = document.querySelector('.apply-create__btn').href;
-        let url = new URL(url_string);
-        for (value of data) {
-
-            console.log(value.name);
-            console.log(value.value);
-
-            url.searchParams.set(value.name, value.value);
-
-        }
-
-        fetch(url).then(window.location.href = '/select/' + table);
-        
-}
-
-*/
 
 /***/ }),
 
