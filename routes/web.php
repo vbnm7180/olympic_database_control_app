@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CRUDController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\RequestController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
