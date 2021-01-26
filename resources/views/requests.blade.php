@@ -1,4 +1,5 @@
 @include('header')
+@include('sidebar-crud')
 
 <div class="content">
 	<div class="request1">Запрос 1. Вывести количество медалей для каждой страны.</div>

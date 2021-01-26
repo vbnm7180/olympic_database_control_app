@@ -21,7 +21,7 @@ class CRUDController extends Controller
     {
         switch ($table) {
             case '1':
-                $res = DB::select('select * from competition');
+                $res = DB::select('SELECT * FROM competition');
                 session()->put('current_table', $res);
                 /*
                 $res = array_map(function ($val) {
@@ -32,7 +32,7 @@ class CRUDController extends Controller
                 return view('crud', ['res' => $res, 'table' => $table]);
                 break;
             case '2':
-                $res = DB::select('select * from country');
+                $res = DB::select('SELECT * FROM country');
                 session()->put('current_table', $res);
                 /*
                 $res = array_map(function ($val) {
@@ -42,22 +42,22 @@ class CRUDController extends Controller
                 return view('crud', ['res' => $res, 'table' => $table]);
                 break;
             case '3':
-                $res = DB::select('select * from result');
+                $res = DB::select('SELECT * FROM result');
                 session()->put('current_table', $res);
                 return view('crud', ['res' => $res, 'table' => $table]);
                 break;
             case '4':
-                $res = DB::select('select * from sportsmen');
+                $res = DB::select('SELECT * FROM sportsmen');
                 session()->put('current_table', $res);
                 return view('crud', ['res' => $res, 'table' => $table]);
                 break;
             case '5':
-                $res = DB::select('select * from sports_ground');
+                $res = DB::select('SELECT * FROM sports_ground');
                 session()->put('current_table', $res);
                 return view('crud', ['res' => $res, 'table' => $table]);
                 break;
             case '6':
-                $res = DB::select('select * from sport_type');
+                $res = DB::select('SELECT * FROM sport_type');
                 session()->put('current_table', $res);
                 //var_dump(session()->get('current_table'));
                 return view('crud', ['res' => $res, 'table' => $table]);
@@ -69,27 +69,27 @@ class CRUDController extends Controller
     {
         switch ($table) {
             case '1':
-                DB::delete('delete from competition where competition_id=' . $string);
+                DB::delete('DELETE FROM competition WHERE competition_id=' . $string);
                 return back();
                 break;
             case '2':
-                DB::delete('delete from country where country_id=' . $string);
+                DB::delete('DELETE FROM country WHERE country_id=' . $string);
                 return back();
                 break;
             case '3':
-                DB::delete('delete from result where result_id=' . $string);
+                DB::delete('DELETE FROM result WHERE result_id=' . $string);
                 return back();
                 break;
             case '4':
-                DB::delete('delete from sportsmen where sportsmen_id=' . $string);
+                DB::delete('DELETE FROM sportsmen WHERE sportsmen_id=' . $string);
                 return back();
                 break;
             case '5':
-                DB::delete('delete from sports_ground where sports_ground_id=' . $string);
+                DB::delete('DELETE FROM sports_ground WHERE sports_ground_id=' . $string);
                 return back();
                 break;
             case '6':
-                DB::delete('delete from sport_type where sport_type_id=' . $string);
+                DB::delete('DELETE FROM sport_type WHERE sport_type_id=' . $string);
                 return back();
                 break;
         }
@@ -100,22 +100,22 @@ class CRUDController extends Controller
 
         switch ($table) {
             case '1':
-                $string = DB::select('select * from competition where competition_id=' . $string);
+                $string = DB::select('SELECT * FROM competition WHERE competition_id=' . $string);
                 break;
             case '2':
-                $string = DB::select('select * from country where country_id=' . $string);
+                $string = DB::select('SELECT * FROM country WHERE country_id=' . $string);
                 break;
             case '3':
-                $string = DB::select('select * from result where result_id=' . $string);
+                $string = DB::select('SELECT * FROM result WHERE result_id=' . $string);
                 break;
             case '4':
-                $string = DB::select('select * from sportsmen where sportsmen_id=' . $string);
+                $string = DB::select('SELECT * FROM sportsmen WHERE sportsmen_id=' . $string);
                 break;
             case '5':
-                $string = DB::select('select * from sports_ground where sports_ground_id=' . $string);
+                $string = DB::select('SELECT * FROM sports_ground WHERE sports_ground_id=' . $string);
                 break;
             case '6':
-                $string = DB::select('select * from sport_type where sport_type_id=' . $string);
+                $string = DB::select('SELECT * FROM sport_type WHERE sport_type_id=' . $string);
                 break;
         }
 
@@ -129,22 +129,22 @@ class CRUDController extends Controller
         Log::info($request);
         switch ($table) {
             case '1':
-                DB::update('update competition set competition_date=?,competition_time=?,sport_type_id=?,sports_ground_id=? where competition_id=?', [$request->input('competition_date'), $request->input('competition_time'), $request->input('sport_type_id'), $request->input('sports_ground_id'), $request->input('competition_id')]);
+                DB::update('UPDATE competition SET competition_date=?,competition_time=?,sport_type_id=?,sports_ground_id=? WHERE competition_id=?', [$request->input('competition_date'), $request->input('competition_time'), $request->input('sport_type_id'), $request->input('sports_ground_id'), $request->input('competition_id')]);
                 break;
             case '2':
-                DB::update('update country set country_name=? where country_id=?', [$request->input('country_name'), $request->input('country_id')]);
+                DB::update('UPDATE country SET country_name=? WHERE country_id=?', [$request->input('country_name'), $request->input('country_id')]);
                 break;
             case '3':
-                DB::update('update result set result=?,position=?,competition_id=?,sportsmen_id=? where result_id=?', [$request->input('result'), $request->input('position'), $request->input('competition_id'), $request->input('sportsmen_id'), $request->input('result_id')]);
+                DB::update('UPDATE result SET result=?,position=?,competition_id=?,sportsmen_id=? WHERE result_id=?', [$request->input('result'), $request->input('position'), $request->input('competition_id'), $request->input('sportsmen_id'), $request->input('result_id')]);
                 break;
             case '4':
-                DB::update('update sportsmen set sportsmen_name=?,birthday=?, sex=?,country_id=?,sport_type_id=? where sportsmen_id=?', [$request->input('sportsmen_name'), $request->input('birthday'), $request->input('sex'), $request->input('country_id'), $request->input('sport_type_id'), $request->input('sportsmen_id')]);
+                DB::update('UPDATE sportsmen SET sportsmen_name=?,birthday=?, sex=?,country_id=?,sport_type_id=? WHERE sportsmen_id=?', [$request->input('sportsmen_name'), $request->input('birthday'), $request->input('sex'), $request->input('country_id'), $request->input('sport_type_id'), $request->input('sportsmen_id')]);
                 break;
             case '5':
-                DB::update('update sports_ground set sports_ground_name=?,sports_ground_address=?,sport_type_id=? where sports_ground_id=?', [$request->input('sports_ground_name'), $request->input('sports_ground_address'), $request->input('sport_type_id'), $request->input('sports_ground_id')]);
+                DB::update('UPDATE sports_ground SET sports_ground_name=?,sports_ground_address=?,sport_type_id=? WHERE sports_ground_id=?', [$request->input('sports_ground_name'), $request->input('sports_ground_address'), $request->input('sport_type_id'), $request->input('sports_ground_id')]);
                 break;
             case '6':
-                DB::update('update sport_type set sport_name= ?, sport_category=? where sport_type_id=?', [$request->input('sport_name'), $request->input('sport_category'), $request->input('sport_type_id')]);
+                DB::update('UPDATE sport_type SET sport_name= ?, sport_category=? WHERE sport_type_id=?', [$request->input('sport_name'), $request->input('sport_category'), $request->input('sport_type_id')]);
                 break;
         }
     }
@@ -159,22 +159,22 @@ class CRUDController extends Controller
     {
         switch ($table) {
             case '1':
-                DB::insert('insert into competition (competition_date,competition_time,sport_type_id,sports_ground_id) values (?,?,?,?)', [$request->input('competition_date'), $request->input('competition_time'), $request->input('sport_type_id'), $request->input('sports_ground_id')]);
+                DB::insert('INSERT INTO competition (competition_date,competition_time,sport_type_id,sports_ground_id) VALUES (?,?,?,?)', [$request->input('competition_date'), $request->input('competition_time'), $request->input('sport_type_id'), $request->input('sports_ground_id')]);
                 break;
             case '2':
-                DB::insert('insert into country (country_name) values (?)', [$request->input('country_name')]);
+                DB::insert('INSERT INTO country (country_name) VALUES (?)', [$request->input('country_name')]);
                 break;
             case '3':
-                DB::insert('insert into result (result,position,competition_id,sportsmen_id) values (?,?,?,?)', [$request->input('result'), $request->input('position'), $request->input('competition_id'), $request->input('sportsmen_id')]);
+                DB::insert('INSERT INTO result (result,position,competition_id,sportsmen_id) VALUES (?,?,?,?)', [$request->input('result'), $request->input('position'), $request->input('competition_id'), $request->input('sportsmen_id')]);
                 break;
             case '4':
-                DB::insert('insert into sportsmen (sportsmen_name,birthday, sex,country_id,sport_type_id) values (?,?,?,?,?)', [$request->input('sportsmen_name'), $request->input('birthday'), $request->input('sex'), $request->input('country_id'), $request->input('sport_type_id')]);
+                DB::insert('INSERT INTO sportsmen (sportsmen_name,birthday, sex,country_id,sport_type_id) VALUES (?,?,?,?,?)', [$request->input('sportsmen_name'), $request->input('birthday'), $request->input('sex'), $request->input('country_id'), $request->input('sport_type_id')]);
                 break;
             case '5':
-                DB::insert('insert into sports_ground (sports_ground_name,sports_ground_address,sport_type_id) values (?,?,?)', [$request->input('sports_ground_name'), $request->input('sports_ground_address'), $request->input('sport_type_id')]);
+                DB::insert('INSERT INTO sports_ground (sports_ground_name,sports_ground_address,sport_type_id) VALUES (?,?,?)', [$request->input('sports_ground_name'), $request->input('sports_ground_address'), $request->input('sport_type_id')]);
                 break;
             case '6':
-                DB::insert('insert into sport_type (sport_name, sport_category) values (?,?)', [$request->input('sport_name'), $request->input('sport_category')]);
+                DB::insert('INSERT INTO sport_type (sport_name, sport_category) VALUES (?,?)', [$request->input('sport_name'), $request->input('sport_category')]);
                 break;
         }
     }
@@ -229,7 +229,7 @@ class CRUDController extends Controller
                 break;
         }
 
-        $select = 'select * from ' . $table_name . ' where';
+        $select = 'SELECT * from ' . $table_name . ' where';
         $loop = 0;
 
         foreach ($request->all() as $key => $value) {
@@ -254,14 +254,17 @@ class CRUDController extends Controller
 
         switch ($id) {
             case '1':
-                DB::select('SELECT COUNT(result.position) AS \'Число медалей\', country.country_name FROM result JOIN sportsmen ON result.sportsmen_id=sportsmen.sportsmen_id JOIN country ON sportsmen.country_id=country.country_id WHERE result.position=1 or 2 or 3 GROUP BY country.country_id');
+                $res=DB::select('SELECT COUNT(result.position) AS \'Число медалей\', country.country_name FROM result JOIN sportsmen ON result.sportsmen_id=sportsmen.sportsmen_id JOIN country ON sportsmen.country_id=country.country_id WHERE result.position=1 or 2 or 3 GROUP BY country.country_id');
                 break;
             case '2':
-                DB::select('SELECT sportsmen.sportsmen_name, sportsmen.birthday, sportsmen.sex, country.country_name, sport_type.sport_name,result.result,result.position FROM result JOIN sportsmen ON result.sportsmen_id=sportsmen.sportsmen_id JOIN country ON sportsmen.country_id=country.country_id JOIN sport_type ON sportsmen.sport_type_id=sport_type.sport_type_id ORDER BY sport_type.sport_type_id,result.position');
+                $res=DB::select('SELECT sportsmen.sportsmen_name, sportsmen.birthday, sportsmen.sex, country.country_name, sport_type.sport_name,result.result,result.position FROM result JOIN sportsmen ON result.sportsmen_id=sportsmen.sportsmen_id JOIN country ON sportsmen.country_id=country.country_id JOIN sport_type ON sportsmen.sport_type_id=sport_type.sport_type_id ORDER BY sport_type.sport_type_id,result.position');
                 break;
             case '3':
-                DB::select('');
+                $res= DB::select('SELECT AVG(DATEDIFF(CURRENT_DATE, sportsmen.birthday)/365) AS \'Средний возраст\', country.country_name FROM sportsmen JOIN country ON sportsmen.country_id=country.country_id GROUP BY country.country_id');
                 break;
         }
+
+        return view('request-results')->with('res',$res);
+
     }
 }
